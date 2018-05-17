@@ -11,33 +11,18 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        p = ListNode(0)
-        res = p
+        res = p = ListNode(0)
         carry = 0
         while l1 or l2 or carry:
-            if l1 == None and l2 :
-                sum = l2.val + carry
-                p.next = ListNode(sum%10)
-                p = p.next
-                l2 = l2.next
-                carry = sum//10
-                continue
-            if l1 and l2 == None :
-                sum = l1.val + carry
-                p.next = ListNode(sum%10)
-                p = p.next
+            val1 = val2 = 0
+            if l1 :
+                val1 = l1.val
                 l1 = l1.next
-                carry = sum//10
-                continue
-            if l1 == None and l2 == None :
-                p.next = ListNode(carry)
-                p = p.next
-                carry = 0
-                continue
-            sum = l1.val + l2.val + carry
+            if l2 :
+                val2 = l2.val
+                l2 = l2.next
+            sum = val1 + val2 + carry
             p.next = ListNode(sum%10)
             carry = sum//10
             p = p.next
-            l1 = l1.next
-            l2 = l2.next
         return res.next
