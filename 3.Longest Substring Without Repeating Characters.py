@@ -13,12 +13,16 @@ class Solution:
         while low >= 0 :
             if s[low] in hashTable :
                 tmp = hashTable[s[low]]
-                h = high - low
-                if h > res : res = h
-                hashTable.clear()
-                high = tmp - 1
-                low = high -1
-                hashTable[s[high]] = high
+                if tmp > high :
+                    hashTable[s[low]] = low
+                    low -= 1
+                    continue
+                else :
+                    h = high - low
+                    if h > res : res = h
+                    high = tmp - 1
+                    hashTable[s[low]] = low
+                    low -= 1
             else :
                 hashTable[s[low]] = low
                 low -= 1
