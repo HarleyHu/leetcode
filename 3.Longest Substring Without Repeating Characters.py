@@ -4,7 +4,7 @@ class Solution:
         :type s: str
         :rtype: int
         """
-        if s == "" :
+        if not s :
             return 0
         high = len(s) - 1
         low = high
